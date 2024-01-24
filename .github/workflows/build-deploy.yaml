@@ -53,7 +53,7 @@ jobs:
 
       - name: Deploy to EKS
         run: |
-          aws eks --region us-east-1 update-kubeconfig --name test-cluster
+          aws eks --region us-east-1 update-kubeconfig --name dev-cluster
           kubectl config current-context
           kubectl apply -f deployment.yaml --validate=false
 
