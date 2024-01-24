@@ -32,9 +32,10 @@ jobs:
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
       - name: Install kubectl
         run: |
-          curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-          chmod +x ./kubectl
-          sudo mv ./kubectl /usr/local/bin/kubectl
+          sudo apt-get update
+          sudo apt-get install -y kubectl
+          systemctl start kubectl
+        
     
       - name: Set up kubeconfig
         run: |
@@ -53,7 +54,10 @@ jobs:
           REPOSITORY: eks-hello-world
           IMAGE_TAG: ${{ github.sha }}
       - name: Display Deployment File After Replacement
-        run: cat deployment.yaml    
+        run: cat deployment.yaml  
+      - name: fix issue  
+        run: |
+          
 
       - name: Deploy to EKS
         run: |
