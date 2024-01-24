@@ -35,7 +35,7 @@ jobs:
 
       - name: Update Kubernetes Deployment
         run: |
-          sed -i 's|CONTAINER_IMAGE|'"$REGISTRY/$REPOSITORY:$IMAGE_TAG"'|' ./k8s/deployment.yaml
+          sed -i 's|CONTAINER_IMAGE|'"$REGISTRY/$REPOSITORY:$IMAGE_TAG"'|' deployment.yaml
           kubectl apply -f deployment.yaml
 
       - name: Deploy to EKS
