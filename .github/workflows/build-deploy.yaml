@@ -34,7 +34,6 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y kubectl
-          systemctl start kubectl
         
     
       - name: Set up kubeconfig
