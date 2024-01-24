@@ -39,6 +39,9 @@ jobs:
       - name: Set up kubeconfig
         run: |
           aws eks --region us-east-1 update-kubeconfig --name test-cluster
+          
+      - name: Get Kubernetes Context
+        run: kubectl config get-contexts
 
       - name: Display Deployment File Before Replacement
         run: cat deployment.yaml    
