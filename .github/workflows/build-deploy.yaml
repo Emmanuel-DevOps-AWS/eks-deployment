@@ -58,6 +58,5 @@ jobs:
       - name: Deploy to EKS
         run: |
           aws eks --region us-east-1 update-kubeconfig --name test-cluster
-          aws eks create-cluster -f cluster.yaml
-          kubectl apply -f deployment.yaml --validate=false
+          kubectl apply -f deployment.yaml 
 
