@@ -36,9 +36,12 @@ jobs:
       - name: Display Deployment File Before Replacement
         run: cat deployment.yaml    
 
-      - name: Update Kubernetes Deployment
-        run: |
-          sed -i 's|CONTAINER_IMAGE|'"$REGISTRY/$REPOSITORY:$IMAGE_TAG"'|' deployment.yaml
+      - name: Replace Image in Deployment File
+        run: python replace.py
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          REPOSITORY: pythonapp
+          IMAGE_TAG: ${{ github.sha }}
       - name: Display Deployment File After Replacement
         run: cat deployment.yaml    
 
