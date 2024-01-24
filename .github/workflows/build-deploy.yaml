@@ -6,6 +6,7 @@ on:
 
 jobs:
   QA_Build_deploy:
+    environment: dev
     runs-on: ubuntu-latest
     steps:
       - name: clone repository
@@ -58,6 +59,8 @@ jobs:
           kubectl apply -f deployment.yaml
   
   Prod_Build_Deploy:
+    environment: prod
+    needs: QA_Build_deploy
     runs-on: ubuntu-latest
     steps:
       - name: clone repository
