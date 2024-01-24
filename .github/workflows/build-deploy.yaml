@@ -41,3 +41,4 @@ jobs:
         run: |
           aws eks --region us-east-2 update-kubeconfig --name mycluster
           kubectl apply -f deployment.yaml
+
